@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DRACCO MOTORS | Luxury Leads</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dracco-black': '#000000',
+                        'dracco-gray-dark': '#0A0A0A',
+                        'dracco-gray-light': '#141414',
+                        'dracco-red': '#E31D2B',
+                        'dracco-red-hover': '#FF313E',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'title': ['Oswald', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #000000; color: #EAEAEA; font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0A0A0A; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #E31D2B; border-radius: 10px; }
+        .dracco-card { background: #0A0A0A; border: 1px solid #141414; transition: all 0.3s ease; }
+        .dracco-card:hover { border-color: #E31D2B; box-shadow: 0 0 20px rgba(227, 29, 43, 0.1); }
+        #sidebar { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .menu-link { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-radius: 12px; font-size: 13px; font-weight: 600; color: #888; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; }
+        .menu-link:hover { background: #141414; color: #fff; }
+        .menu-link.active { background: #E31D2B; color: #fff; box-shadow: 0 10px 20px -5px rgba(227, 29, 43, 0.4); }
+    </style>
+</head>
+<body class="h-screen flex overflow-hidden">
+
+    <aside id="sidebar" class="w-72 bg-dracco-gray-dark border-r border-dracco-gray-light flex flex-col p-8 shrink-0">
+        <div class="mb-12 flex items-center gap-3">
+            <div class="w-10 h-10 bg-dracco-red rounded-lg flex items-center justify-center shadow-lg shadow-red-900/20">
+                <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+            </div>
+            <h1 class="font-title text-3xl tracking-tighter text-white">DRACCO</h1>
+        </div>
+
+        <nav class="space-y-2 flex-1">
+            <button onclick="showView('leads')" class="menu-link w-full active" id="btn-leads">
+                <i data-lucide="message-circle" class="w-4 h-4"></i> Interesados WPP
+            </button>
+            <button onclick="showView('stock')" class="menu-link w-full" id="btn-stock">
+                <i data-lucide="car" class="w-4 h-4"></i> Inventario
+            </button>
+        </nav>
+
+        <div class="pt-8 border-t border-dracco-gray-light flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-dracco-gray-light flex items-center justify-center text-xs font-bold border border-dracco-red/30">GD</div>
+            <div>
+                <p class="text-sm font-bold text-white">Gonzalo Dorrego</p>
+                <p class="text-[10px] text-dracco-red font-bold uppercase tracking-widest">Admin Project</p>
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col min-w-0">
+        <header class="h-24 border-b border-dracco-gray-light flex items-center justify-between px-12 bg-black/50 backdrop-blur-xl">
+            <h2 id="viewTitle" class="font-title text-2xl uppercase tracking-widest text-white">Luxury Leads</h2>
+            <div class="flex items-center gap-6">
+                <div class="relative group">
+                    <input type="text" id="globalSearch" oninput="filtrarTodo()" placeholder="Buscar modelo, cliente, fecha..." 
+                           class="w-80 bg-dracco-gray-dark border border-dracco-gray-light rounded-full py-3 px-6 text-sm focus:outline-none focus:border-dracco-red transition-all">
+                    <i data-lucide="search" class="w-4 h-4 absolute right-5 top-3.5 text-dracco-gray-light group-focus-within:text-dracco-red"></i>
+                </div>
+                <div class="relative">
+                    <i data-lucide="bell" class="w-6 h-6 text-dracco-gray-light cursor-pointer hover:text-white"></i>
+                    <span class="absolute -top-1 -right-1 w-4 h-4 bg-dracco-red rounded-full text-[10px] flex items-center justify-center font-bold">1</span>
+                </div>
+            </div>
+        </header>
+
+        <section id="content" class="flex-1 overflow-y-auto p-12 custom-scrollbar">
+            </section>
+    </main>
+
+    <script>
+        let leads = [
+            { fecha: "2026-04-10", cliente: "Juan Pérez (+54 11...)", modelo: "Toyota Corolla SRT", estado: "Nuevo", prioridad: "ALTA" },
+            { fecha: "2026-04-09", cliente: "Carla Rossi (+54 9...)", modelo: "Ford Ranger Raptor", estado: "Contactado", prioridad: "MEDIA" },
+            { fecha: "2026-04-08", cliente: "Dracco VIP (+54 11...)", modelo: "Porsche 911 GT3", estado: "Vendido", prioridad: "ALTA" }
+        ];
+
+        function showView(view) {
+            const content = document.getElementById('content');
+            document.querySelectorAll('.menu-link').forEach(l => l.classList.remove('active'));
+            document.getElementById('btn-' + view).classList.add('active');
+
+            if(view === 'leads') {
+                content.innerHTML = `
+                    <div class="grid grid-cols-1 gap-4" id="leadsContainer">
+                        ${renderLeads(leads)}
+                    </div>`;
+            } else {
+                content.innerHTML = `<div class="text-center p-20 opacity-50"><i data-lucide="car" class="w-20 h-20 mx-auto mb-4"></i><p>Próximamente: Stock en tiempo real</p></div>`;
+            }
+            lucide.createIcons();
+        }
+
+        function renderLeads(data) {
+            return data.map(l => `
+                <div class="dracco-card p-6 rounded-2xl flex items-center justify-between group">
+                    <div class="flex items-center gap-8">
+                        <div class="text-center border-r border-dracco-gray-light pr-8">
+                            <p class="text-[10px] uppercase font-bold text-dracco-red tracking-widest">Fecha</p>
+                            <p class="text-sm font-bold text-white">${l.fecha}</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold text-dracco-gray-light tracking-widest">Cliente</p>
+                            <p class="text-base font-bold text-white">${l.cliente}</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold text-dracco-gray-light tracking-widest">Modelo Solicitado</p>
+                            <p class="text-base font-bold text-dracco-red italic">${l.modelo}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase border border-dracco-gray-light ${l.prioridad === 'ALTA' ? 'text-dracco-red' : 'text-white'}">
+                            ${l.prioridad}
+                        </span>
+                        <span class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase ${l.estado === 'Vendido' ? 'bg-green-500/20 text-green-500' : 'bg-dracco-gray-light text-white'}">
+                            ${l.estado}
+                        </span>
+                        <button class="w-10 h-10 rounded-full bg-dracco-gray-light flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
+                            <i data-lucide="external-link" class="w-4 h-4 text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filtrarTodo() {
+            const term = document.getElementById('globalSearch').value.toLowerCase();
+            const filtered = leads.filter(l => 
+                l.modelo.toLowerCase().includes(term) || 
+                l.cliente.toLowerCase().includes(term) || 
+                l.fecha.includes(term) ||
+                l.estado.toLowerCase().includes(term)
+            );
+            document.getElementById('leadsContainer').innerHTML = renderLeads(filtered);
+            lucide.createIcons();
+        }
+
+        window.onload = () => showView('leads');
+    </script>
+</body>
+</html>
