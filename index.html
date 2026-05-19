@@ -25,7 +25,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(13, 13, 17, 0.9);
+            background: rgba(13, 13, 17, 0.95);
             backdrop-filter: blur(5px);
             border-bottom: 2px solid #e60000;
             z-index: 1000;
@@ -59,81 +59,96 @@
         /* --- HERO CON VIDEO EN VIVO --- */
         .hero-video-section {
             position: relative;
-            height: 70vh;
-            min-height: 450px;
+            height: 75vh;
+            min-height: 500px;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             border-bottom: 4px solid #e60000;
+            background-color: #0d0d11;
         }
-        /* Contenedor del video */
-        .video-bg {
+        
+        .video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+        .video-wrapper iframe {
+            width: 100vw;
+            height: 56.25vw;
+            min-height: 100vh;
+            min-width: 177.77vh;
             position: absolute;
             top: 50%;
             left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -2;
             transform: translate(-50%, -50%);
             object-fit: cover;
         }
-        /* Capa oscura superior para dar contraste */
+
         .video-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(13,13,17,0.5) 0%, rgba(13,13,17,0.95) 100%);
+            background: linear-gradient(180deg, rgba(13,13,17,0.4) 0%, rgba(13,13,17,0.95) 100%);
             z-index: -1;
         }
-        /* Diseño del Logo idéntico al original */
+        
+        /* --- RECREACIÓN EXACTA DEL LOGO DE LA FOTO --- */
         .logo-box {
             text-align: center;
             padding: 20px;
         }
         .logo-main {
-            font-size: 4.5rem;
             font-weight: 900;
-            letter-spacing: -2px;
             text-transform: uppercase;
             color: #ffffff;
             display: inline-block;
             position: relative;
             line-height: 1;
         }
-        .logo-main .rr {
+        /* Bloque superior: TO y ES separados */
+        .logo-top-row {
+            font-size: 4rem;
+            letter-spacing: 50px; /* Deja espacio para las RR del medio */
+            margin-right: -50px;  /* Compensa el espaciado para centrar */
+            font-family: 'Arial Black', Impact, sans-serif;
+            display: block;
+        }
+        /* Bloque inferior: Las RR rojas cruzando todo */
+        .logo-bottom-row {
+            display: block;
+            font-size: 6rem;
             color: #e60000;
             font-style: italic;
-            font-size: 5.5rem;
-            position: relative;
-            top: 8px;
-            margin: 0 -5px;
+            font-weight: 900;
+            letter-spacing: -5px;
+            margin-top: -35px; /* Sube las letras para entrelazarse */
         }
-        .logo-main .es-part {
-            display: inline-block;
-            position: relative;
-            top: -10px;
-        }
-        .logo-main .mecanica-tag {
-            font-size: 1.1rem;
-            letter-spacing: 4px;
-            position: absolute;
-            bottom: -22px;
-            right: 5px;
-            color: #ffffff;
+        /* Etiqueta chiquita de MECÁNICA */
+        .mecanica-tag {
+            display: block;
+            font-size: 1rem;
+            letter-spacing: 6px;
             font-weight: 700;
+            color: #ffffff;
+            margin-top: -5px;
+            text-align: center;
+            width: 100%;
         }
         .hero-video-section .subtitle {
             font-size: 1.3rem;
             color: #cccccc;
             text-transform: uppercase;
             letter-spacing: 6px;
-            margin-top: 50px;
+            margin-top: 30px;
             text-align: center;
         }
 
@@ -165,7 +180,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 40px;
+            margin-bottom: 25px;
         }
         .card {
             background: #141419;
@@ -201,7 +216,7 @@
             font-size: 1rem;
             margin-bottom: 20px;
         }
-        /* Botón de información */
+        
         .btn-info {
             background: transparent;
             border: 1px solid #e60000;
@@ -215,11 +230,11 @@
             font-size: 0.85rem;
             width: 100%;
         }
-        .btn-info:hover {
+        .card.active .btn-info, .btn-info:hover {
             background: #e60000;
             box-shadow: 0 0 10px rgba(230,0,0,0.4);
         }
-        /* Desplegable interactivo */
+        
         .card-details {
             max-height: 0;
             overflow: hidden;
@@ -229,13 +244,18 @@
             text-align: left;
             background: #1c1c24;
             border-radius: 4px;
-            margin-top: 0;
         }
         .card.active .card-details {
             max-height: 150px;
             margin-top: 15px;
             padding: 15px;
             border-left: 3px solid #e60000;
+        }
+
+        .single-card-row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
 
         /* --- SECCIÓN SOBRE NOSOTROS --- */
@@ -256,7 +276,7 @@
         .about-box p:last-child { margin-bottom: 0; }
         .highlight { color: #e60000; font-weight: bold; }
 
-        /* --- FOOTER DE CONTACTO FIJO ABAJO --- */
+        /* --- FOOTER DE CONTACTO --- */
         footer {
             background: #0a0a0d;
             border-top: 1px solid #222;
@@ -299,12 +319,11 @@
 
         /* --- RESPONSIVE MOBILES --- */
         @media (max-width: 768px) {
-            .logo-main { font-size: 3rem; }
-            .logo-main .rr { font-size: 3.8rem; top: 6px; }
-            .logo-main .es-part { top: -6px; }
-            .logo-main .mecanica-tag { font-size: 0.75rem; bottom: -15px; right: 2px; }
-            .hero-video-section .subtitle { font-size: 1rem; margin-top: 35px; }
-            nav { display: none; } /* Oculta menú en móviles para priorizar espacio */
+            .logo-top-row { font-size: 2.5rem; letter-spacing: 30px; margin-right: -30px; }
+            .logo-bottom-row { font-size: 4rem; margin-top: -22px; }
+            .mecanica-tag { font-size: 0.8rem; }
+            .hero-video-section .subtitle { font-size: 1rem; margin-top: 25px; }
+            nav { display: none; }
         }
     </style>
 </head>
@@ -316,23 +335,24 @@
             <nav>
                 <a href="#inicio">Inicio</a>
                 <a href="#servicios">Servicios</a>
-                <a href="#nosotros">Nosotros</a>
+                <a href="#nav-nosotros">Nosotros</a>
                 <a href="#contacto">Turnos</a>
             </nav>
         </div>
     </header>
 
     <section id="inicio" class="hero-video-section">
-        <video class="video-bg" autoplay loop muted playsinline>
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-mechanic-working-on-a-car-engine-41710-large.mp4" type="video/mp4">
-        </video>
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/g20G_Z8pD8U?autoplay=1&mute=1&loop=1&playlist=g20G_Z8pD8U&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
         <div class="video-overlay"></div>
         
         <div class="logo-box">
-            <h1 class="logo-main">
-                TO<span class="rr">RR</span><span class="es-part">ES</span>
+            <div class="logo-main">
+                <span class="logo-top-row">TOES</span>
+                <span class="logo-bottom-row">RR</span>
                 <span class="mecanica-tag">MECÁNICA</span>
-            </h1>
+            </div>
             <div class="subtitle">Mecánica en General</div>
         </div>
     </section>
@@ -411,19 +431,21 @@
 
             </div>
 
-            <div class="card" style="max-width: 500px; margin: 0 auto;">
-                <div>
-                    <div class="card-title"><span class="icon">⚡</span> Electromecánica e inyección</div>
-                    <p class="card-preview">Módulos, arranques y sistemas de inyección avanzada.</p>
-                </div>
-                <button class="btn-info" onclick="toggleCard(this)">Más Info</button>
-                <div class="card-details">
-                    Reparación de alternadores, motores de arranque, baterías y optimización de inyección electrónica de nafta y diesel.
+            <div class="single-card-row">
+                <div class="card" style="width: 100%; max-width: 350px;">
+                    <div>
+                        <div class="card-title"><span class="icon">⚡</span> Electromecánica e inyección</div>
+                        <p class="card-preview">Módulos, arranques e inyección avanzada.</p>
+                    </div>
+                    <button class="btn-info" onclick="toggleCard(this)">Más Info</button>
+                    <div class="card-details">
+                        Reparación de alternadores, motores de arranque, baterías y optimización de inyección electrónica de nafta y diesel.
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="nosotros">
+        <section id="nav-nosotros">
             <h2>Sobre Nosotros</h2>
             <div class="about-box">
                 <p>En <span class="highlight">Mecánica Torres</span> trabajamos con el compromiso y la precisión que exigen los autos de hoy.</p>
@@ -451,22 +473,18 @@
 
     <script>
         function toggleCard(button) {
-            // Buscamos la tarjeta contenedora del botón
             const card = button.closest('.card');
             
-            // Si la tarjeta ya está activa, la cerramos
             if (card.classList.contains('active')) {
                 card.classList.remove('active');
                 button.textContent = "Más Info";
             } else {
-                // Cerramos cualquier otra tarjeta abierta para que sea ordenado
                 document.querySelectorAll('.card').forEach(c => {
                     c.classList.remove('active');
                     const btn = c.querySelector('.btn-info');
                     if(btn) btn.textContent = "Más Info";
                 });
                 
-                // Abrimos la tarjeta actual
                 card.classList.add('active');
                 button.textContent = "Cerrar";
             }
