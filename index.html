@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mecánica Torres - Taller Mecánico Profesional</title>
     <style>
-        /* --- ESTILOS GENERALES Y TEMÁTICA OSCURA/RACING --- */
+        /* --- ESTILOS GENERALES Y TEMÁTICA OSCURA --- */
         * {
             margin: 0;
             padding: 0;
@@ -56,29 +56,50 @@
         }
         nav a:hover { color: #e60000; }
 
-        /* --- SECCIÓN HERO (INICIO) --- */
+        /* --- SECCIÓN HERO CON LOGO ACTUAlIZADO --- */
         .hero {
             padding: 140px 20px 80px 20px;
             text-align: center;
             background: radial-gradient(circle, rgba(230,0,0,0.15) 0%, rgba(10,10,12,0) 70%);
         }
-        .hero-logo {
+        /* ESTILO PARA EL LOGO TEXTUAL EXACTO */
+        .hero-logo-container {
             font-size: 4rem;
             font-weight: 900;
-            letter-spacing: 4px;
+            letter-spacing: -2px;
             margin-bottom: 0;
             text-transform: uppercase;
+            color: #ffffff; /* TO ES en blanco */
+            position: relative;
+            display: inline-block;
         }
-        .hero-logo span {
-            color: #e60000;
+        .hero-logo-container .rr {
+            color: #e60000; /* RR en rojo */
             font-style: italic;
-            font-size: 4.5rem;
+            font-size: 4.8rem;
+            position: relative;
+            top: 10px; /* Ajuste para entrelazado */
+            left: -10px; /* Ajuste para entrelazado */
+        }
+        .hero-logo-container .es-container {
+            display: inline-block;
+            position: relative;
+            top: -15px; /* Sube ES */
+        }
+        .hero-logo-container .mechanica-text {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            position: relative;
+            top: 20px; /* Baja Mecánica */
+            left: 20px;
+            color: #ffffff;
         }
         .hero .subtitle {
             font-size: 1.3rem;
             color: #cccccc;
             text-transform: uppercase;
             letter-spacing: 5px;
+            margin-top: 40px; /* Separación de Mecánica */
             margin-bottom: 30px;
         }
         
@@ -112,13 +133,12 @@
             margin: 10px auto 0 auto;
         }
 
-        /* --- SECCIÓN INTERACTIVA DE SERVICIOS --- */
+        /* --- SECCIÓN INTERACTIVA DE SERVICIOS (ACORDEÓN) --- */
         .services-container {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-        /* El truco del botón colapsable con detalles */
         .service-item {
             background: #16161a;
             border: 1px solid #26262b;
@@ -166,9 +186,9 @@
             border-top: 1px solid #2d2d35;
         }
         
-        /* Clase activa para cuando se toca con Javascript */
+        /* Clase activa para Javascript */
         .service-item.active .service-content {
-            max-height: 200px; /* Permite que se despliegue */
+            max-height: 200px;
         }
         .service-item.active .arrow {
             transform: rotate(180deg);
@@ -226,10 +246,12 @@
             margin-top: 10px;
         }
 
-        /* --- RESPONSIVE MOBILES --- */
+        /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 600px) {
-            .hero-logo { font-size: 2.8rem; }
-            .hero-logo span { font-size: 3.2rem; }
+            .hero-logo-container { font-size: 2.8rem; letter-spacing: -1px; }
+            .hero-logo-container .rr { font-size: 3.5rem; top: 8px; left: -8px;}
+            .hero-logo-container .es-container { top: -12px; }
+            .hero-logo-container .mechanica-text { font-size: 0.9rem; top: 15px; left: 10px;}
             nav a { margin-left: 12px; font-size: 0.8rem; }
         }
     </style>
@@ -249,7 +271,9 @@
     </header>
 
     <div id="inicio" class="hero">
-        <h1 class="hero-logo">TO<span>RR</span>ES</h1>
+        <h1 class="hero-logo-container">
+            TO<span class="rr">RR</span><span class="es-container">ES<span class="mechanica-text">MECÁNICA</span></span>
+        </h1>
         <div class="subtitle">Mecánica en General</div>
     </div>
 
@@ -361,16 +385,14 @@
 
     <script>
         function toggleService(button) {
-            // Conseguimos el contenedor del servicio (service-item)
             const item = button.parentElement;
             
-            // Si ya estaba abierto, lo cerramos
             if (item.classList.contains('active')) {
                 item.classList.remove('active');
             } else {
-                // Cerramos cualquier otro que esté abierto primero para que quede prolijo
+                // Cerrar otros abiertos
                 document.querySelectorAll('.service-item').forEach(el => el.classList.remove('active'));
-                // Abrimos el que tocó el cliente
+                // Abrir el actual
                 item.classList.add('active');
             }
         }
