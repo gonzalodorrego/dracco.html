@@ -13,7 +13,7 @@
             scroll-behavior: smooth;
         }
         body {
-            background-color: #0d0d11;
+            background-color: #0b0b0e;
             color: #ffffff;
             font-family: 'Arial Black', Impact, sans-serif;
             line-height: 1.6;
@@ -25,7 +25,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(13, 13, 17, 0.95);
+            background: rgba(11, 11, 14, 0.95);
             backdrop-filter: blur(5px);
             border-bottom: 2px solid #e60000;
             z-index: 1000;
@@ -58,7 +58,7 @@
         }
         nav a:hover { color: #e60000; }
 
-        /* --- HERO CON VIDEO LOCAL REAL --- */
+        /* --- HERO CON VIDEO LOCAL EN LOOP --- */
         .hero-video-section {
             position: relative;
             height: 85vh;
@@ -92,45 +92,54 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(13, 13, 17, 0.95) 100%);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(11, 11, 14, 0.98) 100%);
             z-index: 2;
         }
         
-        /* --- RECREACIÓN FIEL DEL LOGO TORRES --- */
+        /* --- CLONACIÓN EXACTA DEL LOGO TORRES --- */
         .logo-wrapper {
             position: relative;
             z-index: 3;
             text-align: center;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .brand-logo {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 7.5rem;
-            font-weight: 900;
-            font-style: italic;
-            line-height: 1;
-            letter-spacing: -2px;
-            color: #ffffff;
             position: relative;
-            text-transform: uppercase;
+            user-select: none;
+        }
+
+        .brand-logo .left-to, .brand-logo .right-es {
+            font-family: 'Arial Black', Impact, sans-serif;
+            font-weight: 900;
+            font-size: 5.8rem;
+            color: #ffffff;
+            line-height: 0.8;
+            letter-spacing: -3px;
         }
 
         .brand-logo .red-rr {
-            color: #e60000;
-            margin-left: -15px;
-            margin-right: -18px;
-            font-size: 8rem;
-            letter-spacing: -8px;
+            font-family: 'Arial Black', Impact, sans-serif;
+            font-weight: 900;
+            font-style: italic;
+            color: #e50000;
+            font-size: 7.2rem;
+            line-height: 0.8;
+            letter-spacing: -10px;
+            margin-left: -12px;
+            margin-right: -14px;
             position: relative;
             z-index: 4;
-            display: inline-block;
-            text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            filter: drop-shadow(0px 0px 15px rgba(0,0,0,0.7));
         }
 
-        .brand-logo .right-block {
+        .brand-logo .right-container {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -138,26 +147,26 @@
         }
 
         .brand-logo .tag-mecanica {
-            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-            font-size: 1.1rem;
+            font-family: 'Arial', sans-serif;
+            font-size: 1.05rem;
             font-weight: 900;
             font-style: normal;
-            letter-spacing: 3px;
+            letter-spacing: 1.5px;
             color: #ffffff;
-            margin-top: -5px;
-            padding-left: 5px;
+            margin-top: 5px;
             align-self: flex-end;
+            line-height: 1;
         }
         
         .hero-video-section .subtitle {
             position: relative;
             z-index: 3;
             font-family: 'Segoe UI', Roboto, sans-serif;
-            font-size: 1.4rem;
-            color: #dddddd;
+            font-size: 1.3rem;
+            color: #cccccc;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-top: 20px;
+            letter-spacing: 5px;
+            margin-top: 30px;
             font-weight: 700;
             text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
@@ -195,7 +204,7 @@
             margin-bottom: 25px;
         }
         .card {
-            background: #141419;
+            background: #131317;
             border: 1px solid #22222a;
             border-radius: 8px;
             padding: 25px;
@@ -255,7 +264,7 @@
             color: #dddddd;
             font-size: 0.95rem;
             text-align: left;
-            background: #1c1c24;
+            background: #1a1a22;
             border-radius: 4px;
         }
         .card.active .card-details {
@@ -273,7 +282,7 @@
 
         /* --- SECCIÓN SOBRE NOSOTROS --- */
         .about-box {
-            background: #141419;
+            background: #131317;
             border-radius: 8px;
             padding: 40px;
             text-align: center;
@@ -291,7 +300,7 @@
 
         /* --- FOOTER DE CONTACTO --- */
         footer {
-            background: #0a0a0d;
+            background: #08080a;
             border-top: 1px solid #222;
             padding: 40px 20px;
             text-align: center;
@@ -333,23 +342,22 @@
 
         /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
-            .brand-logo {
-                font-size: 4.2rem;
-                letter-spacing: -1px;
+            .brand-logo .left-to, .brand-logo .right-es {
+                font-size: 3.4rem;
+                letter-spacing: -1.5px;
             }
             .brand-logo .red-rr {
-                font-size: 4.5rem;
-                margin-left: -8px;
-                margin-right: -10px;
-                letter-spacing: -4px;
+                font-size: 4.3rem;
+                margin-left: -6px;
+                margin-right: -8px;
+                letter-spacing: -6px;
             }
             .brand-logo .tag-mecanica {
                 font-size: 0.65rem;
-                letter-spacing: 1.5px;
-                margin-top: -2px;
-                padding-left: 2px;
+                letter-spacing: 1px;
+                margin-top: 2px;
             }
-            .hero-video-section .subtitle { font-size: 1rem; margin-top: 15px; }
+            .hero-video-section .subtitle { font-size: 1rem; margin-top: 20px; }
             nav { display: none; }
         }
     </style>
@@ -369,7 +377,7 @@
     </header>
 
     <section id="inicio" class="hero-video-section">
-        <video autoplay Louie muted loop playsinline class="video-background">
+        <video autoplay muted loop playsinline class="video-background">
             <source src="7568437-uhd_2160_4096_25fps.mp4" type="video/mp4">
             Tu navegador no soporta videos en HTML5.
         </video>
@@ -379,7 +387,7 @@
             <div class="brand-logo">
                 <span class="left-to">TO</span>
                 <span class="red-rr">RR</span>
-                <div class="right-block">
+                <div class="right-container">
                     <span class="right-es">ES</span>
                     <span class="tag-mecanica">MECÁNICA</span>
                 </div>
