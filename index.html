@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mecánica Torres - Taller Mecánico Profesional</title>
     <style>
-        /* --- ESTILOS GENERALES Y TEMÁTICA OSCURA --- */
+        /* --- ESTILOS GENERALES Y TEMÁTICA RACING PREMIUM --- */
         * {
             margin: 0;
             padding: 0;
@@ -13,26 +13,26 @@
             scroll-behavior: smooth;
         }
         body {
-            background-color: #0a0a0c;
-            background-image: linear-gradient(180deg, #0a0a0c 0%, #121216 100%);
+            background-color: #0d0d11;
             color: #ffffff;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
         }
-        
-        /* --- MENÚ DE NAVEGACIÓN --- */
+
+        /* --- NAVBAR FIJO --- */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(10, 10, 12, 0.95);
+            background: rgba(13, 13, 17, 0.9);
+            backdrop-filter: blur(5px);
             border-bottom: 2px solid #e60000;
             z-index: 1000;
             padding: 15px 20px;
         }
         .nav-container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -40,7 +40,7 @@
         }
         .nav-logo {
             font-weight: 900;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
@@ -50,353 +50,119 @@
             text-decoration: none;
             margin-left: 20px;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             transition: 0.3s;
         }
         nav a:hover { color: #e60000; }
 
-        /* --- SECCIÓN HERO CON LOGO ACTUAlIZADO --- */
-        .hero {
-            padding: 140px 20px 80px 20px;
-            text-align: center;
-            background: radial-gradient(circle, rgba(230,0,0,0.15) 0%, rgba(10,10,12,0) 70%);
+        /* --- HERO CON VIDEO EN VIVO --- */
+        .hero-video-section {
+            position: relative;
+            height: 70vh;
+            min-height: 450px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 4px solid #e60000;
         }
-        /* ESTILO PARA EL LOGO TEXTUAL EXACTO */
-        .hero-logo-container {
-            font-size: 4rem;
+        /* Contenedor del video */
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        /* Capa oscura superior para dar contraste */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(13,13,17,0.5) 0%, rgba(13,13,17,0.95) 100%);
+            z-index: -1;
+        }
+        /* Diseño del Logo idéntico al original */
+        .logo-box {
+            text-align: center;
+            padding: 20px;
+        }
+        .logo-main {
+            font-size: 4.5rem;
             font-weight: 900;
             letter-spacing: -2px;
-            margin-bottom: 0;
             text-transform: uppercase;
-            color: #ffffff; /* TO ES en blanco */
-            position: relative;
-            display: inline-block;
-        }
-        .hero-logo-container .rr {
-            color: #e60000; /* RR en rojo */
-            font-style: italic;
-            font-size: 4.8rem;
-            position: relative;
-            top: 10px; /* Ajuste para entrelazado */
-            left: -10px; /* Ajuste para entrelazado */
-        }
-        .hero-logo-container .es-container {
-            display: inline-block;
-            position: relative;
-            top: -15px; /* Sube ES */
-        }
-        .hero-logo-container .mechanica-text {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            position: relative;
-            top: 20px; /* Baja Mecánica */
-            left: 20px;
             color: #ffffff;
+            display: inline-block;
+            position: relative;
+            line-height: 1;
         }
-        .hero .subtitle {
+        .logo-main .rr {
+            color: #e60000;
+            font-style: italic;
+            font-size: 5.5rem;
+            position: relative;
+            top: 8px;
+            margin: 0 -5px;
+        }
+        .logo-main .es-part {
+            display: inline-block;
+            position: relative;
+            top: -10px;
+        }
+        .logo-main .mecanica-tag {
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            position: absolute;
+            bottom: -22px;
+            right: 5px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .hero-video-section .subtitle {
             font-size: 1.3rem;
             color: #cccccc;
             text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-top: 40px; /* Separación de Mecánica */
-            margin-bottom: 30px;
+            letter-spacing: 6px;
+            margin-top: 50px;
+            text-align: center;
         }
-        
-        /* --- CONTENEDOR PRINCIPAL --- */
-        .main-content {
-            max-width: 800px;
+
+        /* --- CONTENEDOR DE CONTENIDO --- */
+        .container {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px 60px 20px;
+            padding: 60px 20px;
         }
-        
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid #222;
-        }
-        section:last-child { border-none: none; }
-        
+
         h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             text-align: center;
-            position: relative;
         }
         h2::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 70px;
             height: 3px;
             background: #e60000;
-            margin: 10px auto 0 auto;
+            margin: 12px auto 0 auto;
         }
 
-        /* --- SECCIÓN INTERACTIVA DE SERVICIOS (ACORDEÓN) --- */
-        .services-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .service-item {
-            background: #16161a;
-            border: 1px solid #26262b;
-            border-radius: 6px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-        .service-item:hover {
-            border-color: #e60000;
-            box-shadow: 0 4px 15px rgba(230, 0, 0, 0.1);
-        }
-        .service-header {
-            width: 100%;
-            background: none;
-            border: none;
-            color: #ffffff;
-            text-align: left;
-            padding: 18px 20px;
-            font-size: 1.15rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .service-header .icon {
-            margin-right: 15px;
-            font-size: 1.3rem;
-        }
-        .service-header .arrow {
-            color: #e60000;
-            font-size: 0.9rem;
-            transition: transform 0.3s;
-        }
-        .service-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background: #1f1f24;
-            color: #dddddd;
-        }
-        .service-content p {
-            padding: 20px;
-            font-size: 1rem;
-            border-top: 1px solid #2d2d35;
-        }
-        
-        /* Clase activa para Javascript */
-        .service-item.active .service-content {
-            max-height: 200px;
-        }
-        .service-item.active .arrow {
-            transform: rotate(180deg);
-        }
-
-        /* --- SECCIÓN SOBRE NOSOTROS --- */
-        .about-text {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #cccccc;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-        .about-highlight {
-            color: #e60000;
-            font-weight: bold;
-        }
-
-        /* --- SECCIÓN CONTACTO Y TURNOS --- */
-        .contact-card {
-            background: #16161a;
-            border-radius: 8px;
-            padding: 35px 20px;
-            text-align: center;
-            border-top: 4px solid #e60000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-        .contact-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-        .btn-whatsapp {
-            display: inline-block;
-            background: #25d366;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 16px 35px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border-radius: 6px;
-            margin: 20px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-            transition: 0.3s;
-        }
-        .btn-whatsapp:hover {
-            background: #1ebd58;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
-        }
-        .address-info {
-            color: #aaaaaa;
-            font-size: 1rem;
-            margin-top: 10px;
-        }
-
-        /* --- RESPONSIVE MOBILE --- */
-        @media (max-width: 600px) {
-            .hero-logo-container { font-size: 2.8rem; letter-spacing: -1px; }
-            .hero-logo-container .rr { font-size: 3.5rem; top: 8px; left: -8px;}
-            .hero-logo-container .es-container { top: -12px; }
-            .hero-logo-container .mechanica-text { font-size: 0.9rem; top: 15px; left: 10px;}
-            nav a { margin-left: 12px; font-size: 0.8rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="nav-container">
-            <div class="nav-logo">TO<span>RR</span>ES</div>
-            <nav>
-                <a href="#inicio">Inicio</a>
-                <a href="#servicios">Servicios</a>
-                <a href="#nosotros">Nosotros</a>
-                <a href="#contacto">Turnos</a>
-            </nav>
-        </div>
-    </header>
-
-    <div id="inicio" class="hero">
-        <h1 class="hero-logo-container">
-            TO<span class="rr">RR</span><span class="es-container">ES<span class="mechanica-text">MECÁNICA</span></span>
-        </h1>
-        <div class="subtitle">Mecánica en General</div>
-    </div>
-
-    <div class="main-content">
-
-        <section id="servicios">
-            <h2>Nuestros Servicios</h2>
-            <div class="services-container">
-
-                <div class="service-item">
-                    <button class="service-header" onclick="toggleService(this)">
-                        <span><span class="icon">🔧</span> Service y Mantenimiento</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="service-content">
-                        <p>Cambio de aceite y filtros multimarca, fluidos, control de frenos y puesta a punto general para que tu auto ruede sin problemas mecánicos.</p>
-                    </div>
-                </div>
-
-                <div class="service-item">
-                    <button class="service-header" onclick="toggleService(this)">
-                        <span><span class="icon">⚙️</span> Distribución</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="service-content">
-                        <p>Cambio de kit de distribución completo (correa/cadena, tensores y bomba de agua). Trabajamos con repuestos de primera línea para garantizar la vida útil del motor.</p>
-                    </div>
-                </div>
-
-                <div class="service-item">
-                    <button class="service-header" onclick="toggleService(this)">
-                        <span><span class="icon">📋</span> Revisión para VTV</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="service-content">
-                        <p>Chequeo preventivo integral pre-VTV: luces, gases, tren delantero, frenos y chasis para asegurarte la aprobación en el primer intento.</p>
-                    </div>
-                </div>
-
-                <div class="service-item">
-                    <button class="service-header" onclick="toggleService(this)">
-                        <span><span class="icon">🚘</span> Tren Delantero y Frenos</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="service-content">
-                        <p>Reparación y cambio de amortiguadores, bujes, extremos de dirección y pastillas/discos de freno. Seguridad absoluta para el andar de tu vehículo.</p>
-                    </div>
-                </div>
-
-                <div class="service-item">
-                    <button class="service-header" onclick="toggleService(this)">
-                        <span><span class="icon">🛠️</span> Tapas de Cilindro</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="service-content">
-                        <p>Trabajos de alta complejidad: reparación por soplado de junta, cepillado, prueba hidráulica y calibración de válvulas para recuperar la compresión original.</p>
-                    </div>
-                </div>
-
-                <div class="service-item">
-                    <button class="service-header" onclick="toggleService(this)">
-                        <span><span class="icon">💻</span> Diagnóstico Computarizado</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="service-content">
-                        <p>Escaneo electrónico con equipos de última tecnología para detectar fallas exactas en el tablero (Check Engine), sensores y rendimiento del motor.</p>
-                    </div>
-                </div>
-
-                <div class="service-item">
-                    <button class="service-header" onclick="toggleService(this)">
-                        <span><span class="icon">⚡</span> Electromecánica e Inyección</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="service-content">
-                        <p>Solución a problemas eléctricos de arranque, alternadores, baterías y optimización del sistema de inyección electrónica para reducir el consumo de nafta/gasoil.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="nosotros">
-            <h2>Sobre Nosotros</h2>
-            <div class="about-text">
-                <p>En <span class="about-highlight">Mecánica Torres</span> combinamos pasión por los fierros, equipamiento tecnológico y la máxima responsabilidad en General Rodríguez.</p>
-                <br>
-                <p>Sabemos lo importante que es tu auto para el día a día. Por eso, nuestro compromiso es ofrecerte un diagnóstico honesto, soluciones definitivas y plazos de entrega reales. ¡Traé tu coche a manos expertas!</p>
-            </div>
-        </section>
-
-        <section id="contacto">
-            <h2>Turnos y Ubicación</h2>
-            <div class="contact-card">
-                <h3>¿Tu auto necesita un chequeo?</h3>
-                <p>Hacé clic abajo para coordinar un turno directamente por WhatsApp con nosotros.</p>
-                
-                <a href="https://wa.me/5491134339916?text=Hola!%20Quiero%20consultar%20por%20un%20turno%20para%20el%20taller." target="_blank" class="btn-whatsapp">
-                    💬 Agendar Turno por WhatsApp
-                </a>
-                
-                <div class="address-info">
-                    <p>📍 <strong>Dirección:</strong> José C Paz 1568, General Rodríguez</p>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <script>
-        function toggleService(button) {
-            const item = button.parentElement;
-            
-            if (item.classList.contains('active')) {
-                item.classList.remove('active');
-            } else {
-                // Cerrar otros abiertos
-                document.querySelectorAll('.service-item').forEach(el => el.classList.remove('active'));
-                // Abrir el actual
-                item.classList.add('active');
-            }
-        }
-    </script>
-
-</body>
-</html>
+        /* --- SERVICIOS EN FORMATO GRID --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 4
