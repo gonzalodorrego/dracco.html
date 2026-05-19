@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mecánica Torres - Taller Mecánico Profesional</title>
     <style>
-        /* --- ESTILOS GENERALES Y TEMÁTICA RACING PREMIUM --- */
+        /* --- ESTILOS GENERALES Y TEMÁTICA RACING --- */
         * {
             margin: 0;
             padding: 0;
@@ -56,13 +56,14 @@
         }
         nav a:hover { color: #e60000; }
 
-        /* --- HERO CON VIDEO EN VIVO --- */
+        /* --- HERO CON VIDEO DE FONDO REAL --- */
         .hero-video-section {
             position: relative;
             height: 75vh;
             min-height: 500px;
             width: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             overflow: hidden;
@@ -76,7 +77,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
+            z-index: 1;
             pointer-events: none;
         }
         .video-wrapper iframe {
@@ -98,58 +99,85 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(180deg, rgba(13,13,17,0.4) 0%, rgba(13,13,17,0.95) 100%);
-            z-index: -1;
+            z-index: 2;
         }
         
-        /* --- RECREACIÓN EXACTA DEL LOGO DE LA FOTO --- */
+        /* --- RECREACIÓN PERFECTA Y FIEL DEL LOGO --- */
         .logo-box {
+            position: relative;
+            z-index: 3;
             text-align: center;
             padding: 20px;
+            user-select: none;
         }
-        .logo-main {
-            font-weight: 900;
-            text-transform: uppercase;
-            color: #ffffff;
-            display: inline-block;
+        .logo-container {
             position: relative;
-            line-height: 1;
+            display: inline-block;
+            width: 550px;
+            height: 160px;
+            margin: 0 auto;
         }
-        /* Bloque superior: TO y ES separados */
-        .logo-top-row {
-            font-size: 4rem;
-            letter-spacing: 50px; /* Deja espacio para las RR del medio */
-            margin-right: -50px;  /* Compensa el espaciado para centrar */
-            font-family: 'Arial Black', Impact, sans-serif;
-            display: block;
-        }
-        /* Bloque inferior: Las RR rojas cruzando todo */
-        .logo-bottom-row {
-            display: block;
-            font-size: 6rem;
-            color: #e60000;
-            font-style: italic;
-            font-weight: 900;
-            letter-spacing: -5px;
-            margin-top: -35px; /* Sube las letras para entrelazarse */
-        }
-        /* Etiqueta chiquita de MECÁNICA */
-        .mecanica-tag {
-            display: block;
-            font-size: 1rem;
-            letter-spacing: 6px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-top: -5px;
-            text-align: center;
+        /* Bloque Superior Principal: TO  ES */
+        .logo-text-bg {
+            position: absolute;
+            top: 15px;
+            left: 0;
             width: 100%;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Arial Black', Impact, sans-serif;
+            font-size: 5.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -2px;
+            line-height: 1;
+            z-index: 1;
         }
+        .logo-text-bg .part-to {
+            margin-left: 25px;
+        }
+        .logo-text-bg .part-es {
+            margin-right: 25px;
+        }
+        /* Las RR Rojas gigantes cruzadas al medio */
+        .logo-rr {
+            position: absolute;
+            top: 42px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Arial Black', Impact, sans-serif;
+            font-size: 7.2rem;
+            font-weight: 900;
+            font-style: italic;
+            color: #e60000;
+            letter-spacing: -11px;
+            line-height: 1;
+            z-index: 2;
+            text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        /* Etiqueta MECÁNICA abajo a la derecha de ES */
+        .logo-mecanica-tag {
+            position: absolute;
+            bottom: 5px;
+            right: 30px;
+            font-family: 'Arial', sans-serif;
+            font-size: 1rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 2px;
+            z-index: 3;
+        }
+        
         .hero-video-section .subtitle {
-            font-size: 1.3rem;
+            position: relative;
+            z-index: 3;
+            font-size: 1.25rem;
             color: #cccccc;
             text-transform: uppercase;
-            letter-spacing: 6px;
-            margin-top: 30px;
-            text-align: center;
+            letter-spacing: 5px;
+            margin-top: 25px;
+            font-weight: 600;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
         /* --- CONTENEDOR DE CONTENIDO --- */
@@ -319,10 +347,27 @@
 
         /* --- RESPONSIVE MOBILES --- */
         @media (max-width: 768px) {
-            .logo-top-row { font-size: 2.5rem; letter-spacing: 30px; margin-right: -30px; }
-            .logo-bottom-row { font-size: 4rem; margin-top: -22px; }
-            .mecanica-tag { font-size: 0.8rem; }
-            .hero-video-section .subtitle { font-size: 1rem; margin-top: 25px; }
+            .logo-container {
+                width: 320px;
+                height: 110px;
+            }
+            .logo-text-bg {
+                font-size: 3.2rem;
+                top: 10px;
+            }
+            .logo-text-bg .part-to { margin-left: 10px; }
+            .logo-text-bg .part-es { margin-right: 10px; }
+            .logo-rr {
+                font-size: 4.3rem;
+                top: 24px;
+                letter-spacing: -7px;
+            }
+            .logo-mecanica-tag {
+                font-size: 0.65rem;
+                right: 12px;
+                bottom: 2px;
+            }
+            .hero-video-section .subtitle { font-size: 1rem; margin-top: 15px; }
             nav { display: none; }
         }
     </style>
@@ -348,10 +393,13 @@
         <div class="video-overlay"></div>
         
         <div class="logo-box">
-            <div class="logo-main">
-                <span class="logo-top-row">TOES</span>
-                <span class="logo-bottom-row">RR</span>
-                <span class="mecanica-tag">MECÁNICA</span>
+            <div class="logo-container">
+                <div class="logo-text-bg">
+                    <span class="part-to">TO</span>
+                    <span class="part-es">ES</span>
+                </div>
+                <div class="logo-rr">RR</div>
+                <div class="logo-mecanica-tag">MECÁNICA</div>
             </div>
             <div class="subtitle">Mecánica en General</div>
         </div>
