@@ -414,6 +414,150 @@
         .footer-copy { color:#2a2a30; font-size:0.78rem; }
 
         /* ── RESPONSIVE ── */
+
+
+        /* ─── MAPA ─── */
+        .map-wrap {
+            border:1px solid var(--border); border-radius:8px;
+            overflow:hidden; background:var(--bg3);
+        }
+        .map-label {
+            display:flex; align-items:center; gap:8px;
+            padding:12px 16px;
+            font-family:'Barlow Condensed',sans-serif;
+            font-size:.8rem; font-weight:600; letter-spacing:2px;
+            text-transform:uppercase; color:#666;
+            border-bottom:1px solid var(--border);
+        }
+        .map-cta {
+            display:flex; align-items:center; justify-content:center; gap:8px;
+            padding:12px 16px;
+            font-family:'Barlow Condensed',sans-serif;
+            font-size:.8rem; font-weight:600; letter-spacing:2px;
+            text-transform:uppercase; color:#555; text-decoration:none;
+            border-top:1px solid var(--border); transition:.25s;
+        }
+        .map-cta:hover { color:var(--red); background:rgba(230,0,0,0.04); }
+        /* ─── POR QUÉ ELEGIRNOS ─── */
+        .porque-grid {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+            background:var(--border); border:1px solid var(--border);
+            border-radius:8px; overflow:hidden;
+        }
+        .porque-card {
+            background:var(--bg2); padding:36px 28px;
+            transition:.3s; position:relative; overflow:hidden;
+        }
+        .porque-card::after {
+            content:''; position:absolute; bottom:0; left:0;
+            width:0; height:2px; background:var(--red);
+            transition:width .4s ease;
+        }
+        .porque-card:hover::after { width:100%; }
+        .porque-card:hover { background:var(--bg3); }
+        .porque-icon { font-size:2rem; margin-bottom:16px; display:block; }
+        .porque-title {
+            font-family:'Barlow Condensed',sans-serif;
+            font-size:1.15rem; font-weight:700; text-transform:uppercase;
+            letter-spacing:1px; color:#fff; margin-bottom:10px;
+        }
+        .porque-text { color:#555; font-size:.9rem; line-height:1.7; }
+
+        /* ─── HORARIO + TURNO ─── */
+        .turno-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start;
+        }
+        .horario-list { margin-bottom:24px; }
+        .horario-row {
+            display:flex; align-items:center; gap:12px;
+            padding:12px 0; border-bottom:1px solid var(--border);
+            transition:.2s;
+        }
+        .horario-row:hover:not(.closed) { padding-left:6px; }
+        .horario-row.closed { opacity:.35; }
+        .horario-dia {
+            font-family:'Barlow Condensed',sans-serif;
+            font-size:1rem; font-weight:600; text-transform:uppercase;
+            letter-spacing:1px; color:#aaa; width:100px; flex-shrink:0;
+        }
+        .horario-sep { flex:1; height:1px; background:var(--border); }
+        .horario-hora {
+            font-family:'Barlow Condensed',sans-serif;
+            font-size:1rem; font-weight:600; color:#ddd;
+            letter-spacing:.5px;
+        }
+        .horario-dot {
+            width:8px; height:8px; border-radius:50%;
+            background:var(--border); flex-shrink:0; margin-left:8px;
+        }
+        .horario-dot.open { background:#22c55e; box-shadow:0 0 6px rgba(34,197,94,0.6); }
+        .horario-badge {
+            display:inline-flex; align-items:center; gap:10px;
+            background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.2);
+            border-radius:4px; padding:10px 18px;
+            font-family:'Barlow Condensed',sans-serif;
+            font-size:.85rem; font-weight:600; letter-spacing:1px;
+            text-transform:uppercase; color:#22c55e;
+        }
+        .badge-status-dot {
+            width:8px; height:8px; border-radius:50%;
+            background:#22c55e; box-shadow:0 0 8px rgba(34,197,94,.8);
+            animation:pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%,100% { opacity:1; transform:scale(1); }
+            50% { opacity:.5; transform:scale(1.3); }
+        }
+
+        /* ─── FORMULARIO ─── */
+        .form-box {}
+        .form-inner { display:flex; flex-direction:column; gap:16px; }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        .form-group { display:flex; flex-direction:column; gap:6px; }
+        .form-group label {
+            font-family:'Barlow Condensed',sans-serif;
+            font-size:.75rem; font-weight:600; letter-spacing:2px;
+            text-transform:uppercase; color:#666;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background:var(--bg3); border:1px solid var(--border);
+            color:#ddd; padding:12px 14px; border-radius:4px;
+            font-family:'Barlow',sans-serif; font-size:.95rem;
+            outline:none; transition:border-color .25s, box-shadow .25s;
+            -webkit-appearance:none;
+        }
+        .form-group select { cursor:pointer; }
+        .form-group textarea { resize:vertical; min-height:80px; }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color:var(--red); box-shadow:0 0 0 3px rgba(230,0,0,0.1);
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color:#333; }
+        .btn-form {
+            display:flex; align-items:center; justify-content:center; gap:10px;
+            background:var(--red); color:#fff; border:none;
+            padding:15px 30px; border-radius:4px; cursor:pointer;
+            font-family:'Barlow Condensed',sans-serif;
+            font-weight:700; font-size:1.05rem; letter-spacing:2px;
+            text-transform:uppercase;
+            box-shadow:0 0 20px var(--red-glow); transition:.25s;
+            width:100%; margin-top:4px;
+        }
+        .btn-form:hover { background:var(--red-dark); transform:translateY(-2px); box-shadow:0 4px 28px var(--red-glow); }
+        .btn-form:active { transform:translateY(0); }
+
+        @media(max-width:900px) {
+            .porque-grid { grid-template-columns:repeat(2,1fr); }
+            .turno-grid { grid-template-columns:1fr; gap:60px; }
+        }
+        @media(max-width:600px) {
+            .porque-grid { grid-template-columns:1fr; }
+            .form-row { grid-template-columns:1fr; }
+        }
         @media(max-width:900px){
             .services-grid { grid-template-columns:repeat(2,1fr); }
             .about-grid { grid-template-columns:1fr; gap:50px; }
@@ -427,6 +571,93 @@
             .stats-sep { display:none; }
             .footer-contacts { gap:30px; }
         }
+    
+        /* ─── MODAL TURNO ─── */
+        .modal-bg {
+            display:none; position:fixed; inset:0; z-index:2000;
+            background:rgba(0,0,0,0.85); backdrop-filter:blur(6px);
+            align-items:center; justify-content:center; padding:20px;
+        }
+        .modal-bg.open { display:flex; }
+        .modal {
+            background:var(--bg2); border:1px solid var(--border);
+            border-radius:10px; width:100%; max-width:520px;
+            max-height:90vh; overflow-y:auto;
+            position:relative; animation:modalIn .3s cubic-bezier(.16,1,.3,1) both;
+        }
+        @keyframes modalIn {
+            from { opacity:0; transform:translateY(24px) scale(.97); }
+            to   { opacity:1; transform:translateY(0) scale(1); }
+        }
+        .modal-header {
+            padding:28px 28px 20px;
+            border-bottom:1px solid var(--border);
+            display:flex; justify-content:space-between; align-items:flex-start;
+        }
+        .modal-header-text {}
+        .modal-eyebrow {
+            font-family:'Barlow Condensed',sans-serif;
+            font-size:.7rem; font-weight:600; letter-spacing:4px;
+            text-transform:uppercase; color:var(--red); margin-bottom:6px;
+        }
+        .modal-title {
+            font-family:'Barlow Condensed',sans-serif;
+            font-size:1.8rem; font-weight:900; text-transform:uppercase;
+            letter-spacing:1px; line-height:1.1;
+        }
+        .modal-close {
+            background:none; border:1px solid var(--border); color:#666;
+            width:32px; height:32px; border-radius:4px; cursor:pointer;
+            font-size:1.1rem; display:flex; align-items:center; justify-content:center;
+            transition:.2s; flex-shrink:0; margin-left:12px;
+        }
+        .modal-close:hover { border-color:var(--red); color:var(--red); }
+        .modal-body { padding:24px 28px 28px; display:flex; flex-direction:column; gap:16px; }
+        .mform-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .mform-group { display:flex; flex-direction:column; gap:6px; }
+        .mform-group label {
+            font-family:'Barlow Condensed',sans-serif;
+            font-size:.7rem; font-weight:600; letter-spacing:2.5px;
+            text-transform:uppercase; color:#555;
+        }
+        .mform-group input,
+        .mform-group select,
+        .mform-group textarea {
+            background:var(--bg3); border:1px solid var(--border);
+            color:#ddd; padding:11px 14px; border-radius:4px;
+            font-family:'Barlow',sans-serif; font-size:.95rem;
+            outline:none; transition:border-color .2s, box-shadow .2s;
+            -webkit-appearance:none;
+        }
+        .mform-group select { cursor:pointer; }
+        .mform-group textarea { resize:vertical; min-height:90px; line-height:1.6; }
+        .mform-group input:focus,
+        .mform-group select:focus,
+        .mform-group textarea:focus {
+            border-color:var(--red); box-shadow:0 0 0 3px rgba(230,0,0,0.1);
+        }
+        .mform-group input::placeholder,
+        .mform-group textarea::placeholder { color:#333; }
+        .modal-footer { padding:0 28px 28px; }
+        .btn-modal-send {
+            display:flex; align-items:center; justify-content:center; gap:10px;
+            background:var(--red); color:#fff; border:none;
+            width:100%; padding:15px; border-radius:4px; cursor:pointer;
+            font-family:'Barlow Condensed',sans-serif;
+            font-weight:700; font-size:1.05rem; letter-spacing:2px;
+            text-transform:uppercase;
+            box-shadow:0 0 20px var(--red-glow); transition:.25s;
+        }
+        .btn-modal-send:hover { background:var(--red-dark); transform:translateY(-1px); box-shadow:0 4px 28px var(--red-glow); }
+        .modal-note {
+            text-align:center; margin-top:12px;
+            font-size:.78rem; color:#444;
+        }
+        @media(max-width:500px) {
+            .mform-row { grid-template-columns:1fr; }
+            .modal-header, .modal-body, .modal-footer { padding-left:20px; padding-right:20px; }
+        }
+
     </style>
 </head>
 <body>
@@ -441,7 +672,8 @@
             <a href="#inicio">Inicio</a>
             <a href="#servicios">Servicios</a>
             <a href="#nosotros">Nosotros</a>
-            <a href="https://wa.me/5491134339916?text=Hola%20Mec%C3%A1nica%20Torres%2C%20necesito%20un%20turno." target="_blank" class="nav-cta">Turnos</a>
+            <a href="#" onclick="abrirModal();return false;">Turno</a>
+            <a href="https://wa.me/5491134339916?text=Hola%20Mec%C3%A1nica%20Torres%2C%20necesito%20un%20turno." target="_blank" class="nav-cta">WhatsApp</a>
         </nav>
     </div>
 </header>
@@ -595,25 +827,178 @@
                     <div class="section-eyebrow" style="margin-bottom:16px;">Por qué elegirnos</div>
                     <p style="color:#666; font-size:.95rem; line-height:1.8;">Más de una década de experiencia en mecánica general nos respalda. Usamos tecnología de diagnóstico computarizado y trabajamos con repuestos de calidad certificada para que tu vehículo salga del taller en las mejores condiciones.</p>
                 </div>
-                <div class="about-grid-stats">
-                    <div class="astat">
-                        <div class="astat-num">+10</div>
-                        <div class="astat-lbl">Años</div>
+                <div class="map-wrap">
+                    <div class="map-label">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--red)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        José C. Paz 1568, General Rodríguez
                     </div>
-                    <div class="astat">
-                        <div class="astat-num">7</div>
-                        <div class="astat-lbl">Servicios</div>
-                    </div>
-                    <div class="astat">
-                        <div class="astat-num">Multi</div>
-                        <div class="astat-lbl">Todas las marcas</div>
-                    </div>
-                    <div class="astat">
-                        <div class="astat-num">100%</div>
-                        <div class="astat-lbl">Garantizado</div>
-                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.2!2d-58.9478748!3d-34.6168777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc8fb51922a7e1%3A0x890ba30e3e45237c!2sJos%C3%A9%20C.%20Paz%201568%2C%20B1749AOB%20Gral.%20Rodr%C3%ADguez%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1716000000000!5m2!1ses!2sar"
+                        width="100%" height="280"
+                        style="border:0; border-radius:6px; filter:grayscale(1) invert(0.9) contrast(0.85);"
+                        allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <a href="https://www.google.com/maps/place/Jos%C3%A9+C.+Paz+1568,+B1749AOB+Gral.+Rodr%C3%ADguez" target="_blank" class="map-cta">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Abrir en Google Maps
+                    </a>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── POR QUÉ ELEGIRNOS ─── -->
+<section id="porque" style="padding:100px 20px; background:var(--bg);">
+    <div class="container">
+        <div class="section-eyebrow">Razones de peso</div>
+        <h2 class="section-title">¿Por qué elegirnos?</h2>
+        <div class="porque-grid">
+            <div class="porque-card">
+                <div class="porque-icon">🔍</div>
+                <div class="porque-title">Diagnóstico sin cargo</div>
+                <p class="porque-text">Antes de tocar nada, te explicamos qué tiene el auto y cuánto cuesta. Sin sorpresas ni letras chicas.</p>
+            </div>
+            <div class="porque-card">
+                <div class="porque-icon">🔩</div>
+                <div class="porque-title">Repuestos de calidad</div>
+                <p class="porque-text">Trabajamos solo con repuestos homologados y de marcas conocidas. Nada trucho, nada que te falle a los 3 meses.</p>
+            </div>
+            <div class="porque-card">
+                <div class="porque-icon">🤝</div>
+                <div class="porque-title">Trato directo y honesto</div>
+                <p class="porque-text">Hablamos con el dueño, no con un vendedor. Te decimos la verdad aunque no sea lo que querés escuchar.</p>
+            </div>
+            <div class="porque-card">
+                <div class="porque-icon">⚡</div>
+                <div class="porque-title">Entrega en tiempo y forma</div>
+                <p class="porque-text">Sabemos que el auto es tu herramienta de trabajo. Cumplimos los plazos y te avisamos ante cualquier imprevisto.</p>
+            </div>
+            <div class="porque-card">
+                <div class="porque-icon">💻</div>
+                <div class="porque-title">Diagnóstico computarizado</div>
+                <p class="porque-text">Escáner profesional para detectar fallas electrónicas al instante. Sin adivinar, sin perder tiempo.</p>
+            </div>
+            <div class="porque-card">
+                <div class="porque-icon">🚗</div>
+                <div class="porque-title">Multimarca</div>
+                <p class="porque-text">Autos nacionales e importados, nafta y diesel. Si tiene ruedas y motor, en Torres lo atendemos.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── HORARIO + TURNO ─── -->
+<section id="turno" style="padding:100px 20px; background:var(--bg2); position:relative;">
+<div style="position:absolute;top:-1px;left:0;width:100%;height:3px;background:linear-gradient(90deg,transparent,var(--red) 30%,var(--red) 70%,transparent);"></div>
+    <div class="container">
+        <div class="turno-grid">
+
+            <!-- Horarios -->
+            <div class="horario-box">
+                <div class="section-eyebrow">Estamos acá</div>
+                <h2 class="section-title" style="margin-bottom:32px;">Horarios<br>de atención</h2>
+                <div class="horario-list">
+                    <div class="horario-row">
+                        <span class="horario-dia">Lunes</span>
+                        <span class="horario-sep"></span>
+                        <span class="horario-hora">8:00 – 18:00 hs</span>
+                        <span class="horario-dot open"></span>
+                    </div>
+                    <div class="horario-row">
+                        <span class="horario-dia">Martes</span>
+                        <span class="horario-sep"></span>
+                        <span class="horario-hora">8:00 – 18:00 hs</span>
+                        <span class="horario-dot open"></span>
+                    </div>
+                    <div class="horario-row">
+                        <span class="horario-dia">Miércoles</span>
+                        <span class="horario-sep"></span>
+                        <span class="horario-hora">8:00 – 18:00 hs</span>
+                        <span class="horario-dot open"></span>
+                    </div>
+                    <div class="horario-row">
+                        <span class="horario-dia">Jueves</span>
+                        <span class="horario-sep"></span>
+                        <span class="horario-hora">8:00 – 18:00 hs</span>
+                        <span class="horario-dot open"></span>
+                    </div>
+                    <div class="horario-row">
+                        <span class="horario-dia">Viernes</span>
+                        <span class="horario-sep"></span>
+                        <span class="horario-hora">8:00 – 18:00 hs</span>
+                        <span class="horario-dot open"></span>
+                    </div>
+                    <div class="horario-row closed">
+                        <span class="horario-dia">Sábado</span>
+                        <span class="horario-sep"></span>
+                        <span class="horario-hora">Cerrado</span>
+                        <span class="horario-dot"></span>
+                    </div>
+                    <div class="horario-row closed">
+                        <span class="horario-dia">Domingo</span>
+                        <span class="horario-sep"></span>
+                        <span class="horario-hora">Cerrado</span>
+                        <span class="horario-dot"></span>
+                    </div>
+                </div>
+                <div class="horario-badge">
+                    <span class="badge-status-dot"></span>
+                    Abierto hoy · Lun a Vie
+                </div>
+            </div>
+
+            <!-- Formulario -->
+            <div class="form-box">
+                <div class="section-eyebrow">Reservá tu lugar</div>
+                <h2 class="section-title" style="margin-bottom:32px;">Pedí tu<br>turno online</h2>
+                <div class="form-inner">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" id="f-nombre" placeholder="Tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="tel" id="f-telefono" placeholder="11 1234-5678">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Servicio</label>
+                        <select id="f-servicio">
+                            <option value="">Seleccioná un servicio</option>
+                            <option>Service / Mantenimiento</option>
+                            <option>Distribución</option>
+                            <option>Revisión para VTV</option>
+                            <option>Tren delantero</option>
+                            <option>Tapas de cilindro</option>
+                            <option>Diagnóstico computarizado</option>
+                            <option>Electromecánica e inyección</option>
+                            <option>Otro / Consulta general</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Vehículo</label>
+                            <input type="text" id="f-vehiculo" placeholder="Ej: Fiat Cronos 2021">
+                        </div>
+                        <div class="form-group">
+                            <label>Día preferido</label>
+                            <input type="date" id="f-fecha">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje adicional <span style="color:var(--muted);font-size:.75rem;">(opcional)</span></label>
+                        <textarea id="f-mensaje" placeholder="Contanos brevemente qué le pasa al auto..." rows="3"></textarea>
+                    </div>
+                    <button class="btn-form" onclick="enviarTurno()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L0 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        Enviar por WhatsApp
+                    </button>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -673,6 +1058,168 @@ function toggleCardSolo(btn) {
         btn.querySelector('.arr').textContent = '×';
     }
 }
+
+function enviarTurno() {
+    const nombre   = document.getElementById('f-nombre').value.trim();
+    const telefono = document.getElementById('f-telefono').value.trim();
+    const servicio = document.getElementById('f-servicio').value;
+    const vehiculo = document.getElementById('f-vehiculo').value.trim();
+    const fecha    = document.getElementById('f-fecha').value;
+    const mensaje  = document.getElementById('f-mensaje').value.trim();
+
+    if (!nombre || !telefono || !servicio) {
+        alert('Por favor completá nombre, teléfono y servicio.');
+        return;
+    }
+
+    const fechaFmt = fecha ? new Date(fecha + 'T12:00:00').toLocaleDateString('es-AR', {weekday:'long', day:'numeric', month:'long'}) : '';
+
+    let texto = `Hola Mecánica Torres, quiero sacar un turno 👋
+
+`;
+    texto += `*Nombre:* ${nombre}
+`;
+    texto += `*Teléfono:* ${telefono}
+`;
+    texto += `*Servicio:* ${servicio}
+`;
+    if (vehiculo) texto += `*Vehículo:* ${vehiculo}
+`;
+    if (fechaFmt) texto += `*Día preferido:* ${fechaFmt}
+`;
+    if (mensaje)  texto += `*Consulta:* ${mensaje}
+`;
+
+    window.open('https://wa.me/5491134339916?text=' + encodeURIComponent(texto), '_blank');
+}
+
+function abrirModal() {
+    document.getElementById('modalBg').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function cerrarModal() {
+    document.getElementById('modalBg').classList.remove('open');
+    document.body.style.overflow = '';
+}
+function cerrarModalFuera(e) {
+    if (e.target === document.getElementById('modalBg')) cerrarModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarModal(); });
+
+function enviarModalWpp() {
+    const nombre   = document.getElementById('m-nombre').value.trim();
+    const telefono = document.getElementById('m-telefono').value.trim();
+    const marca    = document.getElementById('m-marca').value.trim();
+    const modelo   = document.getElementById('m-modelo').value.trim();
+    const servicio = document.getElementById('m-servicio').value;
+    const problema = document.getElementById('m-problema').value.trim();
+
+    if (!nombre || !telefono) {
+        alert('Por favor completá nombre y teléfono.');
+        return;
+    }
+
+    let msg = `Hola Mecánica Torres 👋 Quiero sacar un turno.
+
+`;
+    msg += `*Nombre:* ${nombre}
+`;
+    msg += `*Teléfono:* ${telefono}
+`;
+    if (marca || modelo) msg += `*Vehículo:* ${marca} ${modelo}
+`.trim().replace('  ',' ') + '
+';
+    if (servicio) msg += `*Servicio:* ${servicio}
+`;
+    if (problema) msg += `
+*Problema:* ${problema}`;
+
+    window.open('https://wa.me/5491134339916?text=' + encodeURIComponent(msg), '_blank');
+    cerrarModal();
+}
+
+// Marcar estado abierto/cerrado dinámicamente
+(function() {
+    const now = new Date();
+    const dia = now.getDay(); // 0 dom, 1-5 lun-vie, 6 sab
+    const hora = now.getHours();
+    const abierto = dia >= 1 && dia <= 5 && hora >= 8 && hora < 18;
+    const badge = document.querySelector('.horario-badge');
+    if (badge) {
+        if (abierto) {
+            badge.style.color = '#22c55e';
+            badge.innerHTML = '<span class="badge-status-dot"></span> Abierto ahora · Hasta las 18:00 hs';
+        } else {
+            badge.style.color = '#ef4444';
+            badge.style.background = 'rgba(239,68,68,0.08)';
+            badge.style.borderColor = 'rgba(239,68,68,0.2)';
+            badge.querySelector('.badge-status-dot').style.background = '#ef4444';
+            badge.querySelector('.badge-status-dot').style.boxShadow = '0 0 8px rgba(239,68,68,.8)';
+            badge.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:#ef4444;box-shadow:0 0 8px rgba(239,68,68,.8);display:inline-block;"></span> Cerrado ahora · Abre el lunes';
+        }
+    }
+})();
 </script>
+
+<!-- ─── MODAL TURNO ─── -->
+<div class="modal-bg" id="modalBg" onclick="cerrarModalFuera(event)">
+    <div class="modal" id="modalBox">
+        <div class="modal-header">
+            <div class="modal-header-text">
+                <div class="modal-eyebrow">Reservá tu lugar</div>
+                <div class="modal-title">Pedí tu turno</div>
+            </div>
+            <button class="modal-close" onclick="cerrarModal()">✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="mform-row">
+                <div class="mform-group">
+                    <label>Nombre y apellido</label>
+                    <input type="text" id="m-nombre" placeholder="Ej: Juan González">
+                </div>
+                <div class="mform-group">
+                    <label>Teléfono</label>
+                    <input type="tel" id="m-telefono" placeholder="11 1234-5678">
+                </div>
+            </div>
+            <div class="mform-row">
+                <div class="mform-group">
+                    <label>Marca del vehículo</label>
+                    <input type="text" id="m-marca" placeholder="Ej: Volkswagen">
+                </div>
+                <div class="mform-group">
+                    <label>Modelo y año</label>
+                    <input type="text" id="m-modelo" placeholder="Ej: Gol Trend 2018">
+                </div>
+            </div>
+            <div class="mform-group">
+                <label>Servicio que necesitás</label>
+                <select id="m-servicio">
+                    <option value="">Seleccioná un servicio</option>
+                    <option>Service / Mantenimiento general</option>
+                    <option>Distribución</option>
+                    <option>Revisión para VTV</option>
+                    <option>Tren delantero</option>
+                    <option>Tapas de cilindro</option>
+                    <option>Diagnóstico computarizado</option>
+                    <option>Electromecánica e inyección</option>
+                    <option>Otro / No sé todavía</option>
+                </select>
+            </div>
+            <div class="mform-group">
+                <label>Describí brevemente el problema</label>
+                <textarea id="m-problema" placeholder="Ej: El auto hace un ruido extraño cuando freno, y la luz del tablero está encendida..."></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-modal-send" onclick="enviarModalWpp()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L0 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                Enviar consulta por WhatsApp
+            </button>
+            <p class="modal-note">Te vamos a responder a la brevedad para confirmar el turno.</p>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
