@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -443,7 +442,7 @@
         .porque-grid {
             display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
             background:var(--border); border:1px solid var(--border);
-            border-radius:8px; overflow:hidden;
+            border-radius:8px; overflow:visien;
         }
         .porque-card {
             background:var(--bg2); padding:36px 28px;
@@ -852,6 +851,7 @@
     <div class="container">
         <div class="section-eyebrow">Razones de peso</div>
         <h2 class="section-title">¿Por qué elegirnos?</h2>
+        <p style="color:#666; font-size:1rem; line-height:1.8; max-width:640px; margin-bottom:48px;">Más de una década de experiencia en mecánica general nos respalda. Usamos tecnología de diagnóstico computarizado y trabajamos con repuestos de calidad certificada para que tu vehículo salga del taller en las mejores condiciones.</p>
         <div class="porque-grid">
             <div class="porque-card">
                 <div class="porque-icon">🔍</div>
@@ -1031,63 +1031,58 @@
 
 <script>
 function toggleCard(btn) {
-    const card = btn.closest('.card');
-    const isActive = card.classList.contains('active');
-    document.querySelectorAll('.card, .card-solo').forEach(c => {
+    var card = btn.closest('.card');
+    var isActive = card.classList.contains('active');
+    document.querySelectorAll('.card, .card-solo').forEach(function(c) {
         c.classList.remove('active');
-        const b = c.querySelector('.btn-toggle .arr');
+        var b = c.querySelector('.btn-toggle .arr');
         if (b) b.textContent = '+';
     });
     if (!isActive) {
         card.classList.add('active');
-        btn.querySelector('.arr').textContent = '×';
+        btn.querySelector('.arr').textContent = 'x';
     }
 }
 function toggleCardSolo(btn) {
-    const card = document.getElementById('card-solo');
-    const isActive = card.classList.contains('active');
-    document.querySelectorAll('.card, .card-solo').forEach(c => {
+    var card = document.getElementById('card-solo');
+    var isActive = card.classList.contains('active');
+    document.querySelectorAll('.card, .card-solo').forEach(function(c) {
         c.classList.remove('active');
-        const b = c.querySelector('.btn-toggle .arr');
+        var b = c.querySelector('.btn-toggle .arr');
         if (b) b.textContent = '+';
     });
     if (!isActive) {
         card.classList.add('active');
-        btn.querySelector('.arr').textContent = '×';
+        btn.querySelector('.arr').textContent = 'x';
     }
 }
 
 function enviarTurno() {
-    const nombre   = document.getElementById('f-nombre').value.trim();
-    const telefono = document.getElementById('f-telefono').value.trim();
-    const servicio = document.getElementById('f-servicio').value;
-    const vehiculo = document.getElementById('f-vehiculo').value.trim();
-    const fecha    = document.getElementById('f-fecha').value;
-    const mensaje  = document.getElementById('f-mensaje').value.trim();
-
+    var nombre   = document.getElementById('f-nombre').value.trim();
+    var telefono = document.getElementById('f-telefono').value.trim();
+    var servicio = document.getElementById('f-servicio').value;
+    var vehiculo = document.getElementById('f-vehiculo').value.trim();
+    var fecha    = document.getElementById('f-fecha').value;
+    var mensaje  = document.getElementById('f-mensaje').value.trim();
     if (!nombre || !telefono || !servicio) {
-        alert('Por favor completá nombre, teléfono y servicio.');
+        alert('Por favor completa nombre, telefono y servicio.');
         return;
     }
+    var texto = 'Hola Mecanica Torres, quiero sacar un turno.
 
-    const fechaFmt = fecha ? new Date(fecha + 'T12:00:00').toLocaleDateString('es-AR', {weekday:'long', day:'numeric', month:'long'}) : '';
-
-    let texto = `Hola Mecánica Torres, quiero sacar un turno 👋
-
-`;
-    texto += `*Nombre:* ${nombre}
-`;
-    texto += `*Teléfono:* ${telefono}
-`;
-    texto += `*Servicio:* ${servicio}
-`;
-    if (vehiculo) texto += `*Vehículo:* ${vehiculo}
-`;
-    if (fechaFmt) texto += `*Día preferido:* ${fechaFmt}
-`;
-    if (mensaje)  texto += `*Consulta:* ${mensaje}
-`;
-
+';
+    texto += 'Nombre: ' + nombre + '
+';
+    texto += 'Telefono: ' + telefono + '
+';
+    texto += 'Servicio: ' + servicio + '
+';
+    if (vehiculo) texto += 'Vehiculo: ' + vehiculo + '
+';
+    if (fecha) texto += 'Dia preferido: ' + fecha + '
+';
+    if (mensaje) texto += 'Consulta: ' + mensaje + '
+';
     window.open('https://wa.me/5491134339916?text=' + encodeURIComponent(texto), '_blank');
 }
 
@@ -1102,58 +1097,51 @@ function cerrarModal() {
 function cerrarModalFuera(e) {
     if (e.target === document.getElementById('modalBg')) cerrarModal();
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') cerrarModal(); });
 
 function enviarModalWpp() {
-    const nombre   = document.getElementById('m-nombre').value.trim();
-    const telefono = document.getElementById('m-telefono').value.trim();
-    const marca    = document.getElementById('m-marca').value.trim();
-    const modelo   = document.getElementById('m-modelo').value.trim();
-    const servicio = document.getElementById('m-servicio').value;
-    const problema = document.getElementById('m-problema').value.trim();
-
+    var nombre   = document.getElementById('m-nombre').value.trim();
+    var telefono = document.getElementById('m-telefono').value.trim();
+    var marca    = document.getElementById('m-marca').value.trim();
+    var modelo   = document.getElementById('m-modelo').value.trim();
+    var servicio = document.getElementById('m-servicio').value;
+    var problema = document.getElementById('m-problema').value.trim();
     if (!nombre || !telefono) {
-        alert('Por favor completá nombre y teléfono.');
+        alert('Por favor completa nombre y telefono.');
         return;
     }
+    var msg = 'Hola Mecanica Torres, quiero sacar un turno.
 
-    let msg = `Hola Mecánica Torres 👋 Quiero sacar un turno.
-
-`;
-    msg += `*Nombre:* ${nombre}
-`;
-    msg += `*Teléfono:* ${telefono}
-`;
-    if (marca || modelo) msg += `*Vehículo:* ${marca} ${modelo}
-`.trim().replace('  ',' ') + '
 ';
-    if (servicio) msg += `*Servicio:* ${servicio}
-`;
-    if (problema) msg += `
-*Problema:* ${problema}`;
-
+    msg += 'Nombre: ' + nombre + '
+';
+    msg += 'Telefono: ' + telefono + '
+';
+    if (marca || modelo) msg += 'Vehiculo: ' + marca + ' ' + modelo + '
+';
+    if (servicio) msg += 'Servicio: ' + servicio + '
+';
+    if (problema) msg += '
+Problema: ' + problema;
     window.open('https://wa.me/5491134339916?text=' + encodeURIComponent(msg), '_blank');
     cerrarModal();
 }
 
-// Marcar estado abierto/cerrado dinámicamente
 (function() {
-    const now = new Date();
-    const dia = now.getDay(); // 0 dom, 1-5 lun-vie, 6 sab
-    const hora = now.getHours();
-    const abierto = dia >= 1 && dia <= 5 && hora >= 8 && hora < 18;
-    const badge = document.querySelector('.horario-badge');
+    var now = new Date();
+    var dia = now.getDay();
+    var hora = now.getHours();
+    var abierto = dia >= 1 && dia <= 5 && hora >= 8 && hora < 18;
+    var badge = document.querySelector('.horario-badge');
     if (badge) {
         if (abierto) {
             badge.style.color = '#22c55e';
-            badge.innerHTML = '<span class="badge-status-dot"></span> Abierto ahora · Hasta las 18:00 hs';
+            badge.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.8);display:inline-block;animation:pulse 2s infinite;"></span> Abierto ahora - Hasta las 18:00 hs';
         } else {
             badge.style.color = '#ef4444';
             badge.style.background = 'rgba(239,68,68,0.08)';
             badge.style.borderColor = 'rgba(239,68,68,0.2)';
-            badge.querySelector('.badge-status-dot').style.background = '#ef4444';
-            badge.querySelector('.badge-status-dot').style.boxShadow = '0 0 8px rgba(239,68,68,.8)';
-            badge.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:#ef4444;box-shadow:0 0 8px rgba(239,68,68,.8);display:inline-block;"></span> Cerrado ahora · Abre el lunes';
+            badge.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;"></span> Cerrado ahora - Abre el lunes';
         }
     }
 })();
