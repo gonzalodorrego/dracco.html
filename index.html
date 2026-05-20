@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1066,21 +1065,13 @@ function enviarTurno() {
     var fecha    = document.getElementById('f-fecha').value;
     var mensaje  = document.getElementById('f-mensaje').value.trim();
     if (!nombre || !telefono || !servicio) { alert('Completa nombre, telefono y servicio.'); return; }
-    var msg = 'Hola Mecanica Torres, quiero sacar un turno.
-
-';
-    msg += 'Nombre: ' + nombre + '
-';
-    msg += 'Telefono: ' + telefono + '
-';
-    msg += 'Servicio: ' + servicio + '
-';
-    if (vehiculo) msg += 'Vehiculo: ' + vehiculo + '
-';
-    if (fecha) msg += 'Dia preferido: ' + fecha + '
-';
-    if (mensaje) msg += 'Consulta: ' + mensaje + '
-';
+    var msg = 'Hola Mecanica Torres, quiero sacar un turno.\n\n';
+    msg += 'Nombre: ' + nombre + '\n';
+    msg += 'Telefono: ' + telefono + '\n';
+    msg += 'Servicio: ' + servicio + '\n';
+    if (vehiculo) msg += 'Vehiculo: ' + vehiculo + '\n';
+    if (fecha) msg += 'Dia preferido: ' + fecha + '\n';
+    if (mensaje) msg += 'Consulta: ' + mensaje + '\n';
     window.open('https://wa.me/5491134339916?text=' + encodeURIComponent(msg), '_blank');
 }
 
@@ -1105,19 +1096,12 @@ function enviarModalWpp() {
     var servicio = document.getElementById('m-servicio').value;
     var problema = document.getElementById('m-problema').value.trim();
     if (!nombre || !telefono) { alert('Completa nombre y telefono.'); return; }
-    var msg = 'Hola Mecanica Torres, quiero sacar un turno.
-
-';
-    msg += 'Nombre: ' + nombre + '
-';
-    msg += 'Telefono: ' + telefono + '
-';
-    if (marca || modelo) msg += 'Vehiculo: ' + marca + ' ' + modelo + '
-';
-    if (servicio) msg += 'Servicio: ' + servicio + '
-';
-    if (problema) msg += '
-Problema: ' + problema;
+    var msg = 'Hola Mecanica Torres, quiero sacar un turno.\n\n';
+    msg += 'Nombre: ' + nombre + '\n';
+    msg += 'Telefono: ' + telefono + '\n';
+    if (marca || modelo) msg += 'Vehiculo: ' + marca + ' ' + modelo + '\n';
+    if (servicio) msg += 'Servicio: ' + servicio + '\n';
+    if (problema) msg += '\nProblema: ' + problema;
     window.open('https://wa.me/5491134339916?text=' + encodeURIComponent(msg), '_blank');
     cerrarModal();
 }
