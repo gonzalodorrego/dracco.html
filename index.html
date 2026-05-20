@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -752,42 +753,42 @@
                 <div class="card-num">01</div>
                 <div class="card-title"><span class="card-icon-sm">🔧</span> Service</div>
                 <p class="card-preview">Mantenimiento general y reparaciones multimarca.</p>
-                <button class="btn-toggle" onclick="toggleCard(this)"><span class="arr">+</span> Más info</button>
+                <button class="btn-toggle" onclick="toggleCard(this)">Mas Info</button>
                 <div class="card-details">Cambio de aceite y filtros, control de fluidos, revisión de niveles y puesta a punto general del motor.</div>
             </div>
             <div class="card">
                 <div class="card-num">02</div>
                 <div class="card-title"><span class="card-icon-sm">⚙️</span> Distribución</div>
                 <p class="card-preview">Kits completos con repuestos homologados.</p>
-                <button class="btn-toggle" onclick="toggleCard(this)"><span class="arr">+</span> Más info</button>
+                <button class="btn-toggle" onclick="toggleCard(this)">Mas Info</button>
                 <div class="card-details">Reemplazo de correas, tensores, cadenas y bombas de agua con componentes de máxima seguridad.</div>
             </div>
             <div class="card">
                 <div class="card-num">03</div>
                 <div class="card-title"><span class="card-icon-sm">📋</span> Revisión VTV</div>
                 <p class="card-preview">Chequeo integral previo a la verificación.</p>
-                <button class="btn-toggle" onclick="toggleCard(this)"><span class="arr">+</span> Más info</button>
+                <button class="btn-toggle" onclick="toggleCard(this)">Mas Info</button>
                 <div class="card-details">Control preventivo de gases, luces, frenos y chasis para garantizar la aprobación sin observaciones.</div>
             </div>
             <div class="card">
                 <div class="card-num">04</div>
                 <div class="card-title"><span class="card-icon-sm">🚘</span> Tren Delantero</div>
                 <p class="card-preview">Estabilidad, frenos y amortiguación perfectos.</p>
-                <button class="btn-toggle" onclick="toggleCard(this)"><span class="arr">+</span> Más info</button>
+                <button class="btn-toggle" onclick="toggleCard(this)">Mas Info</button>
                 <div class="card-details">Reparación de bujes, extremos, amortiguadores y sistemas de frenos completos (discos y pastillas).</div>
             </div>
             <div class="card">
                 <div class="card-num">05</div>
                 <div class="card-title"><span class="card-icon-sm">🛠️</span> Tapas de Cilindro</div>
                 <p class="card-preview">Trabajos de precisión en cabeza de motor.</p>
-                <button class="btn-toggle" onclick="toggleCard(this)"><span class="arr">+</span> Más info</button>
+                <button class="btn-toggle" onclick="toggleCard(this)">Mas Info</button>
                 <div class="card-details">Cepillado de plano, cambio de juntas sopladas, válvulas y pruebas hidráulicas de compresión.</div>
             </div>
             <div class="card">
                 <div class="card-num">06</div>
                 <div class="card-title"><span class="card-icon-sm">💻</span> Diagnóstico</div>
                 <p class="card-preview">Detección de fallas electrónicas al instante.</p>
-                <button class="btn-toggle" onclick="toggleCard(this)"><span class="arr">+</span> Más info</button>
+                <button class="btn-toggle" onclick="toggleCard(this)">Mas Info</button>
                 <div class="card-details">Escaneo completo del sistema de inyección y sensores para resolver alertas de tablero (Check Engine).</div>
             </div>
         </div>
@@ -797,7 +798,7 @@
                 <div class="card-num">07</div>
                 <div class="card-title"><span class="card-icon-sm">⚡</span> Electromecánica e Inyección</div>
                 <p class="card-preview">Módulos, arranques e inyección avanzada nafta y diesel.</p>
-                <button class="btn-toggle" onclick="toggleCardSolo(this)"><span class="arr">+</span> Más info</button>
+                <button class="btn-toggle" onclick="toggleCardSolo(this)">Mas Info</button>
                 <div class="card-details">Reparación de alternadores, motores de arranque, baterías y optimización de inyección electrónica.</div>
             </div>
         </div>
@@ -1035,12 +1036,12 @@ function toggleCard(btn) {
     var isActive = card.classList.contains('active');
     document.querySelectorAll('.card, .card-solo').forEach(function(c) {
         c.classList.remove('active');
-        var b = c.querySelector('.btn-toggle .arr');
-        if (b) b.textContent = '+';
+        var b = c.querySelector('.btn-toggle');
+        if (b) b.textContent = 'Mas Info';
     });
     if (!isActive) {
         card.classList.add('active');
-        btn.querySelector('.arr').textContent = 'x';
+        btn.textContent = 'Cerrar';
     }
 }
 function toggleCardSolo(btn) {
@@ -1048,12 +1049,12 @@ function toggleCardSolo(btn) {
     var isActive = card.classList.contains('active');
     document.querySelectorAll('.card, .card-solo').forEach(function(c) {
         c.classList.remove('active');
-        var b = c.querySelector('.btn-toggle .arr');
-        if (b) b.textContent = '+';
+        var b = c.querySelector('.btn-toggle');
+        if (b) b.textContent = 'Mas Info';
     });
     if (!isActive) {
         card.classList.add('active');
-        btn.querySelector('.arr').textContent = 'x';
+        btn.textContent = 'Cerrar';
     }
 }
 
@@ -1064,34 +1065,31 @@ function enviarTurno() {
     var vehiculo = document.getElementById('f-vehiculo').value.trim();
     var fecha    = document.getElementById('f-fecha').value;
     var mensaje  = document.getElementById('f-mensaje').value.trim();
-    if (!nombre || !telefono || !servicio) {
-        alert('Por favor completa nombre, telefono y servicio.');
-        return;
-    }
-    var texto = 'Hola Mecanica Torres, quiero sacar un turno.
+    if (!nombre || !telefono || !servicio) { alert('Completa nombre, telefono y servicio.'); return; }
+    var msg = 'Hola Mecanica Torres, quiero sacar un turno.
 
 ';
-    texto += 'Nombre: ' + nombre + '
+    msg += 'Nombre: ' + nombre + '
 ';
-    texto += 'Telefono: ' + telefono + '
+    msg += 'Telefono: ' + telefono + '
 ';
-    texto += 'Servicio: ' + servicio + '
+    msg += 'Servicio: ' + servicio + '
 ';
-    if (vehiculo) texto += 'Vehiculo: ' + vehiculo + '
+    if (vehiculo) msg += 'Vehiculo: ' + vehiculo + '
 ';
-    if (fecha) texto += 'Dia preferido: ' + fecha + '
+    if (fecha) msg += 'Dia preferido: ' + fecha + '
 ';
-    if (mensaje) texto += 'Consulta: ' + mensaje + '
+    if (mensaje) msg += 'Consulta: ' + mensaje + '
 ';
-    window.open('https://wa.me/5491134339916?text=' + encodeURIComponent(texto), '_blank');
+    window.open('https://wa.me/5491134339916?text=' + encodeURIComponent(msg), '_blank');
 }
 
 function abrirModal() {
-    document.getElementById('modalBg').classList.add('open');
+    document.getElementById('modalBg').style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 function cerrarModal() {
-    document.getElementById('modalBg').classList.remove('open');
+    document.getElementById('modalBg').style.display = 'none';
     document.body.style.overflow = '';
 }
 function cerrarModalFuera(e) {
@@ -1106,10 +1104,7 @@ function enviarModalWpp() {
     var modelo   = document.getElementById('m-modelo').value.trim();
     var servicio = document.getElementById('m-servicio').value;
     var problema = document.getElementById('m-problema').value.trim();
-    if (!nombre || !telefono) {
-        alert('Por favor completa nombre y telefono.');
-        return;
-    }
+    if (!nombre || !telefono) { alert('Completa nombre y telefono.'); return; }
     var msg = 'Hola Mecanica Torres, quiero sacar un turno.
 
 ';
@@ -1133,16 +1128,15 @@ Problema: ' + problema;
     var hora = now.getHours();
     var abierto = dia >= 1 && dia <= 5 && hora >= 8 && hora < 18;
     var badge = document.querySelector('.horario-badge');
-    if (badge) {
-        if (abierto) {
-            badge.style.color = '#22c55e';
-            badge.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.8);display:inline-block;animation:pulse 2s infinite;"></span> Abierto ahora - Hasta las 18:00 hs';
-        } else {
-            badge.style.color = '#ef4444';
-            badge.style.background = 'rgba(239,68,68,0.08)';
-            badge.style.borderColor = 'rgba(239,68,68,0.2)';
-            badge.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;"></span> Cerrado ahora - Abre el lunes';
-        }
+    if (!badge) return;
+    if (abierto) {
+        badge.style.color = '#22c55e';
+        badge.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.8);display:inline-block;"></span> Abierto ahora - Hasta las 18:00 hs';
+    } else {
+        badge.style.background = 'rgba(239,68,68,0.08)';
+        badge.style.borderColor = 'rgba(239,68,68,0.2)';
+        badge.style.color = '#ef4444';
+        badge.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;"></span> Cerrado ahora - Abre el lunes';
     }
 })();
 </script>
